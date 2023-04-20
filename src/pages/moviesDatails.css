@@ -1,0 +1,36 @@
+.details-description {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  width: 78%;
+  margin-top: 40px;
+}
+
+.details-title {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.details-overview {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+  color: #061a30;
+}
+
+.details-text {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
