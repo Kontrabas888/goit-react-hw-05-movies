@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./cast.css"
+import getMovieCredits from "../services/api";
 
 export const Cast = ({ movieId }) => {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=74452ff48fb840cab50125a8e2dfcb31`
-      )
+    getMovieCredits(movieId)
       .then((response) => {
         setCast(response.data.cast);
       })

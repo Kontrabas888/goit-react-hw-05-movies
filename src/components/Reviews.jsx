@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { getMovieReviews } from "../services/api";
 
 export const Reviews = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=74452ff48fb840cab50125a8e2dfcb31`
-      )
-      .then((response) => {
-        setReviews(response.data.results);
+    getMovieReviews(movieId)
+      .then((results) => {
+        setReviews(results);
       })
       .catch((error) => {
         console.log(error);

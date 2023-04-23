@@ -25,12 +25,12 @@
   margin-bottom: 5px;
 }
 
-nav ul li a {
+.back {
   text-decoration: none;
   color: #007bff;
   font-weight: bold;
 }
 
-nav ul li a:hover {
+.back:hover {
   text-decoration: underline;
 }
