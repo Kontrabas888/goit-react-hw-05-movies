@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { Routes, Route } from 'react-router-dom';
 import { Cast } from "../components/Cast";
 import { Reviews } from "../components/Reviews";
@@ -9,7 +9,6 @@ import "../styles/moviesDatails.css";
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -21,14 +20,6 @@ const MovieDetails = () => {
         console.log(error);
       });
   }, [movieId]);
-
-  const handleBackButtonClick = () => {
-    if (location.state && location.state.fromMovies) {
-      navigate('/movies');
-    } else {
-      navigate('/');
-    }
-  }
 
   return (
     <div>
@@ -46,7 +37,7 @@ const MovieDetails = () => {
           </div>
 
           <div>
-            <button className="back" onClick={handleBackButtonClick}>Go Back</button>
+            <Link className="back" to={location.state?.from ?? "/"} ><button>Back</button></Link>
           </div>
 
           <img

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { searchMovies } from "../services/api.js";
 import "../styles/movies.css";
 
@@ -8,6 +9,8 @@ const Movies = () => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
   const [searchParams] = useSearchParams();
+  const location = useLocation();
+
 
   const handleInputChange = (event) => {
     const searchText = event.target.value;
@@ -55,8 +58,11 @@ const Movies = () => {
       </form>
       {movies.map((movie) => (
         <div key={movie.id}>
-          <h3>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+          <h3 className="link-movies">
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.title}
+            </Link>
+
           </h3>
         </div>
       ))}
